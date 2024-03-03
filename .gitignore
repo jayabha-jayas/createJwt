@@ -17,7 +17,7 @@ build
 local.properties
 .classpath
 .project
-java/lib/
+#java/lib/
 java/bin/
 java/src/main/java/Test.java
 
