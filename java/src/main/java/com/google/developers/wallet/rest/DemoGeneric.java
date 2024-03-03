@@ -17,6 +17,7 @@ package com.google.developers.wallet.rest;
 
 // [START setup]
 // [START imports]
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.google.api.client.googleapis.batch.BatchRequest;
@@ -24,14 +25,18 @@ import com.google.api.client.googleapis.batch.json.JsonBatchCallback;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.googleapis.json.GoogleJsonError;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-import com.google.api.client.http.*;
+import com.google.api.client.http.HttpHeaders;
+import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
+
 import com.google.api.services.walletobjects.Walletobjects;
 import com.google.api.services.walletobjects.model.*;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.auth.oauth2.ServiceAccountCredentials;
-import java.io.*;
+
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.security.interfaces.RSAPrivateKey;
 import java.util.*;
 // [END imports]

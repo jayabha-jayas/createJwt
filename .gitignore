@@ -22,7 +22,7 @@ java/bin/
 java/src/main/java/Test.java
 
 # See: https://developers.google.com/wallet/generic/resources/libraries
-java/lib/libwalletobjects_public_java_lib_v1.jar
+#java/lib/libwalletobjects_public_java_lib_v1.jar
 
 # Python
 *.pyc
