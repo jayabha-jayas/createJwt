@@ -4,6 +4,7 @@ package com.google.developers.wallet.rest;// Online Java Compiler
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.google.api.services.walletobjects.model.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,7 +21,7 @@ import java.util.*;
 class HelloWorld {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException {
 //        DemoGeneric demoGeneric = DemoGeneric( );
-        final String jwt = createJWTNewObjects("3388000000022327001", "loyalplastic", "loyalplastic");
+        final String jwt = createJWTNewObjects("3388000000022327001", "plastic", "plastic");
         System.out.println(jwt);
 
 
@@ -132,69 +133,10 @@ class HelloWorld {
         jwt.put("iat", 1709460402);
         jwt.put("typ", "savetowallet");
 
-        Map<String, Object> payload = new HashMap<>();
-        List<Map<String, Object>> loyaltyObjects = new ArrayList<>();
+        Map<String, Object> payload = getPayload();
 
-        Map<String, Object> loyaltyObject = new HashMap<>();
-        Map<String, Object> barcode = new HashMap<>();
-        barcode.put("alternateText", "12345");
-        barcode.put("type", "qrCode");
-        barcode.put("value", "28343E3");
-        loyaltyObject.put("barcode", barcode);
-
-        Map<String, Object> linksModuleData = new HashMap<>();
-        List<Map<String, Object>> uris = new ArrayList<>();
-        Map<String, Object> uri = new HashMap<>();
-        uri.put("kind", "walletobjects#uri");
-        uri.put("uri", "https://www.baconrista.com/myaccount?id=1234567890");
-        uri.put("description", "My Baconrista Account");
-        uris.add(uri);
-        linksModuleData.put("uris", uris);
-        loyaltyObject.put("linksModuleData", linksModuleData);
-
-        Map<String, Object> infoModuleData = new HashMap<>();
-        List<Map<String, Object>> labelValueRows = new ArrayList<>();
-
-        Map<String, Object> row1 = new HashMap<>();
-        List<Map<String, Object>> columns1 = new ArrayList<>();
-        columns1.add(Map.of("value", "Jane Doe", "label", "Member Name"));
-        columns1.add(Map.of("value", "1234567890", "label", "Membership #"));
-        row1.put("columns", columns1);
-        labelValueRows.add(row1);
-
-        Map<String, Object> row2 = new HashMap<>();
-        List<Map<String, Object>> columns2 = new ArrayList<>();
-        columns2.add(Map.of("value", "2 coffees", "label", "Next Reward in"));
-        columns2.add(Map.of("value", "01/15/2013", "label", "Member Since"));
-        row2.put("columns", columns2);
-        labelValueRows.add(row2);
-
-        infoModuleData.put("labelValueRows", labelValueRows);
-        infoModuleData.put("showLastUpdateTime", "true");
-        loyaltyObject.put("infoModuleData", infoModuleData);
-
-        loyaltyObject.put("id", "3388000000022327001.6a5c6cde-f04f-47a8-a83e-91b3b6e2d6e2");
-
-        Map<String, Object> loyaltyPoints = new HashMap<>();
-        loyaltyPoints.put("balance", Map.of("string", "500"));
-        loyaltyPoints.put("label", "Points");
-        loyaltyObject.put("loyaltyPoints", loyaltyPoints);
-
-        loyaltyObject.put("accountId", "1234567890");
-        loyaltyObject.put("classId", "3388000000022327001.loyalplastic");
-        loyaltyObject.put("accountName", "Jane Doe");
-        loyaltyObject.put("state", "active");
-        loyaltyObject.put("version", 1);
-
-        List<Map<String, Object>> textModulesData = new ArrayList<>();
-        Map<String, Object> textModule = new HashMap<>();
-        textModule.put("body", "You are 5 coffees away from receiving a free bacon fat latte. ");
-        textModule.put("header", "Jane's Baconrista Rewards");
-        textModulesData.add(textModule);
-        loyaltyObject.put("textModulesData", textModulesData);
-
-        loyaltyObjects.add(loyaltyObject);
-        payload.put("loyaltyObjects", loyaltyObjects);
+        // Print the resulting HashMap
+        System.out.println(payload);
 
         jwt.put("payload", payload);
 
@@ -268,6 +210,65 @@ class HelloWorld {
         System.out.printf("https://pay.google.com/gp/v/save/%s%n", token);
 
         return String.format("https://pay.google.com/gp/v/save/%s", token);
+    }
+
+    @NotNull
+    private static Map<String, Object> getPayload() {
+        Map<String, Object> payload = new HashMap<>();
+        List<Map<String, Object>> genericObjects = new ArrayList<>();
+
+        // Create a generic object
+        Map<String, Object> genericObject = new HashMap<>();
+        genericObject.put("id", "3388000000022327001.3d7eb940-e5a1-482c-8de1-259d73f5cd7c");
+        genericObject.put("classId", "3388000000022327001.plastic");
+
+        Map<String, Object> logo = new HashMap<>();
+        Map<String, Object> sourceUriLogo = new HashMap<>();
+        sourceUriLogo.put("uri", "https://raw.githubusercontent.com/droidbg/assets/main/sea_horse.png");
+        logo.put("sourceUri", sourceUriLogo);
+        genericObject.put("logo", logo);
+
+        Map<String, Object> cardTitle = new HashMap<>();
+        Map<String, Object> defaultValueCardTitle = new HashMap<>();
+        defaultValueCardTitle.put("language", "en-US");
+        defaultValueCardTitle.put("value", "OCEAN CLEANUP");
+        cardTitle.put("defaultValue", defaultValueCardTitle);
+        genericObject.put("cardTitle", cardTitle);
+
+        Map<String, Object> subheader = new HashMap<>();
+        Map<String, Object> defaultValueSubheader = new HashMap<>();
+        defaultValueSubheader.put("language", "en-US");
+        defaultValueSubheader.put("value", "Sea horse");
+        subheader.put("defaultValue", defaultValueSubheader);
+        genericObject.put("subheader", subheader);
+
+        Map<String, Object> header = new HashMap<>();
+        Map<String, Object> defaultValueHeader = new HashMap<>();
+        defaultValueHeader.put("language", "en-US");
+        defaultValueHeader.put("value", "Plastic Slayer");
+        header.put("defaultValue", defaultValueHeader);
+        genericObject.put("header", header);
+
+        Map<String, Object> barcode = new HashMap<>();
+        barcode.put("alternateText", "12345");
+        barcode.put("type", "qrCode");
+        barcode.put("value", "28343E3");
+        genericObject.put("barcode", barcode);
+
+        genericObject.put("hexBackgroundColor", "#4285f4");
+
+        Map<String, Object> heroImage = new HashMap<>();
+        Map<String, Object> sourceUriHeroImage = new HashMap<>();
+        sourceUriHeroImage.put("uri", "https://raw.githubusercontent.com/droidbg/assets/main/sea_horse.png");
+        heroImage.put("sourceUri", sourceUriHeroImage);
+        genericObject.put("heroImage", heroImage);
+
+        // Add genericObject to the list
+        genericObjects.add(genericObject);
+
+        // Add the list of generic objects to the payload
+        payload.put("genericObjects", genericObjects);
+        return payload;
     }
 
 
