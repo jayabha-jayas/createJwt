@@ -21,7 +21,7 @@ import java.util.*;
 class HelloWorld {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException {
 //        DemoGeneric demoGeneric = DemoGeneric( );
-        final String jwt = createJWTNewOneObjects("3388000000022327001", "red9", "red9");
+        final String jwt = createJWTNewOneObjects("3388000000022327001", "red10", "red10");
         System.out.println(jwt);
 
 
@@ -229,7 +229,7 @@ class HelloWorld {
                                         .setSourceUri(
                                                 new ImageUri()
                                                         .setUri(
-                                                                "https://raw.githubusercontent.com/droidbg/assets/main/sea_horse.png"))
+                                                                "https://raw.githubusercontent.com/droidbg/assets/main/whale.png"))
                                         .setContentDescription(
                                                 new LocalizedString()
                                                         .setDefaultValue(
@@ -239,8 +239,8 @@ class HelloWorld {
                         .setTextModulesData(
                                 List.of(
                                         new TextModuleData()
-                                                .setHeader("おめでとう！")
-                                                .setBody("美しいタツノオトシゴを救出しました")
+                                                .setHeader("Congratulations！")
+                                                .setBody("You have rescued a endangered whale species")
                                                 .setId("TEXT_MODULE_ID")))
                         .setLinksModuleData(
                                 new LinksModuleData()
@@ -248,7 +248,7 @@ class HelloWorld {
                                                 Arrays.asList(
                                                         new Uri()
                                                                 .setUri("https://jayabha-jayas.github.io/ocean_cleanup/")
-                                                                .setDescription("オーシャンクリーンアップをプレイする")
+                                                                .setDescription("Play Ocean cleanup")
                                                                 .setId("LINK_MODULE_URI_ID")
 //                                                        new Uri()
 //                                                                .setUri("tel:6505555555")
@@ -278,12 +278,12 @@ class HelloWorld {
                         .setCardTitle(
                                 new LocalizedString()
                                         .setDefaultValue(
-                                                new TranslatedString().setLanguage("en-US").setValue("海洋浄化")))
+                                                new TranslatedString().setLanguage("en-US").setValue("Ocean cleanup")))
                         .setHeader(
                                 new LocalizedString()
                                         .setDefaultValue(
-                                                new TranslatedString().setLanguage("en-US").setValue("海上戦闘機")))
-                        .setHexBackgroundColor("#D9F6F0")
+                                                new TranslatedString().setLanguage("en-US").setValue("Magical whale")))
+                        .setHexBackgroundColor("#71737b")
                         .setLogo(
                                 new Image()
                                         .setSourceUri(
